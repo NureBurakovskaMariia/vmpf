@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Список покупок</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        h2 { color: #333; }
+        ul { list-style-type: square; }
+        li { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<h2>Мій список покупок</h2>
+<ul id="shopping-ul"></ul>
+
+<script>
+    function loadShoppingList() {
+        const url = 'shopping-list.json';
+        const listContainer = document.getElementById('shopping-ul');
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Помилка завантаження файлу');
+                }
+                return response.text();
+            })
+            .then(dataString => {
+                const shoppingList = JSON.parse(dataString);
+
+                listContainer.innerHTML = '';
+
+                shoppingList.forEach(product => {
+                    const li = document.createElement('li');
+                    li.textContent = `${product.item} — ${product.quantity}`;
+                    listContainer.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error('Помилка:', error);
+                listContainer.innerHTML = '<li style="color:red">Не вдалося завантажити список.</li>';
+            })
+            .finally(() => {
+                console.log('Спроба завантаження завершена');
+            });
+    }
+
+    loadShoppingList();
+</script>
+</body>
+</html>

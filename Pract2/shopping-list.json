@@ -1,0 +1,6 @@
+[
+  {"id": 1, "item": "Молоко", "quantity": "1 л"},
+  {"id": 2, "item": "Хліб", "quantity": "1 шт"},
+  {"id": 3, "item": "Яблука", "quantity": "1 кг"},
+  {"id": 4, "item": "Сир", "quantity": "500 г"}
+]

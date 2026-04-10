@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Фільтр</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 30px; line-height: 1.6; }
+        .container { max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
+        input, button { padding: 10px; margin: 10px 0; width: 100%; box-sizing: border-box; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; max-height: 400px; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Фільтр JSON даних</h2>
+
+    <label>1. Оберіть JSON-файл:</label>
+    <input type="file" id="jsonFile" accept=".json">
+
+    <label>2. Введіть значення для фільтрації:</label>
+    <input type="text" id="filterValue" placeholder="Наприклад: Молоко">
+
+    <button onclick="processFilter()">Відфільтрувати</button>
+
+    <h3>Результат:</h3>
+    <pre id="output">Тут з'являться відфільтровані дані...</pre>
+</div>
+
+<script>
+    function processFilter() {
+        const fileInput = document.getElementById('jsonFile');
+        const filterInput = document.getElementById('filterValue').value.toLowerCase();
+        const output = document.getElementById('output');
+
+        if (!fileInput.files[0]) {
+            output.innerHTML = '<span class="error">Будь ласка, спочатку оберіть файл!</span>';
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            try {
+                const data = JSON.parse(e.target.result);
+
+                if (!Array.isArray(data)) {
+                    throw new Error("JSON має бути масивом об'єктів.");
+                }
+
+                const filteredData = data.filter(item => {
+                    return Object.values(item).some(val =>
+                        String(val).toLowerCase().includes(filterInput)
+                    );
+                });
+
+                if (filteredData.length > 0) {
+                    output.textContent = JSON.stringify(filteredData, null, 4);
+                } else {
+                    output.textContent = "Збігів не знайдено.";
+                }
+
+            } catch (err) {
+                output.innerHTML = `<span class="error">Помилка: ${err.message}</span>`;
+            }
+        };
+
+        reader.readAsText(fileInput.files[0]);
+    }
+</script>
+
+</body>
+</html>

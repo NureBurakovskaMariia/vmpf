@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #fffaf0;
+    color: #4a4a4a;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+h1 {
+    text-align: center;
+    color: #ffb6c1;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 0px #fff;
+}
+
+.post-card {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 30px;
+
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
+
+    border: 2px solid #fff;
+    transition: all 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.3);
+}
+
+.post-title {
+    color: #6a5acd;
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.post-category {
+    font-size: 0.85em;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.post-category[data-category="Космос"] { background-color: #a79aff; }
+.post-category[data-category="Подорожі"] { background-color: #87cefa; }
+.post-category[data-category="Кулінарія"] { background-color: #ff7f50; }
+.post-category { background-color: #3498db; }
+
+.post-content {
+    line-height: 1.8;
+    font-size: 1.05em;
+}
+
+.post-meta {
+    font-size: 0.85em;
+    color: #a9a9a9;
+    margin-top: 20px;
+    border-top: 1px dashed #ffe4e1;
+    padding-top: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0 20px 0;
+    border: 2px solid #ffe4e1;
+    border-radius: 15px;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1em;
+    color: #4a4a4a;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #ffb6c1;
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
+}
+
+.helptext {
+    font-size: 0.8em;
+    color: #a9a9a9;
+    display: block;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+form ul {
+    font-size: 0.85em;
+    color: #a9a9a9;
+    padding-left: 20px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+.top-nav {
+    background-color: #fff;
+    padding: 15px 30px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.2);
+    margin-bottom: 30px;
+}
+
+.user-greeting {
+    margin-right: 20px;
+    font-weight: 800;
+    color: #6a5acd;
+    font-size: 1.2em;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    background-color: #ffb6c1;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-submit:hover {
+    background-color: #ff9fb0;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.4);
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.95em;
+    color: #a9a9a9;
+}
+
+.auth-links a {
+    color: #6a5acd;
+    text-decoration: none;
+    font-weight: 800;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #a79aff;
+    text-decoration: underline;
+}

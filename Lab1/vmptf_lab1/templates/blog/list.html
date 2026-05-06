@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Блог</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="top-nav">
+        {% if user.is_authenticated %}
+            <span class="user-greeting">{{ user.username }}</span>
+            <form action="{% url 'logout' %}" method="post" style="display:inline; margin: 0;">
+                {% csrf_token %}
+                <button type="submit" class="post-category" style="background-color: #ffb6c1; border:none; cursor:pointer; margin: 0;">Вийти</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}" class="post-category" style="text-decoration:none; margin: 0 10px 0 0;">Увійти</a>
+            <a href="{% url 'register' %}" class="post-category" style="background-color: #a79aff; text-decoration:none; margin: 0;">Реєстрація</a>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <h1>Останні статті</h1>
+
+        {% for post in posts %}
+            <div class="post-card">
+                <h2 class="post-title">{{ post.title }}</h2>
+                <span class="post-category" data-category="{{ post.category.name }}">{{ post.category.name }}</span>
+                <p class="post-content">{{ post.content }}</p>
+                <div class="post-meta">
+                    Автор: {{ post.author }} | Опубліковано: {{ post.created_at|date:"d.m.Y" }}
+                </div>
+            </div>
+        {% empty %}
+            <p>Статей поки немає.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
